@@ -18,5 +18,9 @@
   "bugs": {
     "url": "https://github.com/BerlicTheHunter/OfficeRoster/issues"
   },
-  "homepage": "https://github.com/BerlicTheHunter/OfficeRoster#readme"
+  "homepage": "https://github.com/BerlicTheHunter/OfficeRoster#readme",
+  "dependencies": {
+    "inquirer": "^8.1.2",
+    "jest": "^27.1.0"
+  }
 }
