@@ -1,10 +1,10 @@
 const generateTeam = (team) =>{
   const generateManager = manager => {
     return `
-              <h2 class="card-title">${manager.name}</h2>
+              <h2 class="card-title">${manager.getName()}</h2>
               <ul class="list-group">
-                      <li class="list-group-item">ID: ${manager.id}</li>
-                      <li class="list-group-item">Email: <a href="mailto:${manager.email}">${manager.email}</a></li>
+                      <li class="list-group-item">ID: ${manager.getId()}</li>
+                      <li class="list-group-item">Email: <a href="mailto:${manager.getEmail}">${manager.getEmail()}</a></li>
                       <li class="list-group-item">Office number: ${manager.officeNumber}</li>
               </ul>
     `;
@@ -12,31 +12,46 @@ const generateTeam = (team) =>{
 
   const generateEngineer = engineer => {
     return `
-              <h2 class="card-title">${engineer.name}</h2>
+              <h2 class="card-title">${engineer.getName()}</h2>
               <ul class="list-group">
-                      <li class="list-group-item">ID: ${engineer.id}</li>
-                      <li class="list-group-item">Email: <a href="mailto:${engineer.email}">${engineer.email}</a></li>
-                      <li class="list-group-item">GitHub: ${engineer.github}</li>
+                      <li class="list-group-item">ID: ${engineer.getId()}</li>
+                      <li class="list-group-item">Email: <a href="mailto:${engineer.getEmail()}">${engineer.getEmail()}</a></li>
+                      <li class="list-group-item">GitHub: ${engineer.getGithub()}</li>
               </ul>
     `;
   };
 
   const generateIntern = intern => {
     return `
-              <h2 class="card-title">${intern.name}</h2>
+              <h2 class="card-title">${intern.getName()}</h2>
               <ul class="list-group">
-                      <li class="list-group-item">ID: ${intern.id}</li>
-                      <li class="list-group-item">Email: <a href="mailto:${intern.email}">${intern.email}</a></li>
-                      <li class="list-group-item">School: ${intern.school}</li>
+                      <li class="list-group-item">ID: ${intern.getId()}</li>
+                      <li class="list-group-item">Email: <a href="mailto:${intern.getEmail()}">${intern.getEmail()}</a></li>
+                      <li class="list-group-item">School: ${intern.getSchool()}</li>
               </ul>
     `;
   };
 
-  const htmlArr= [
-    generateManager(team[0]),
-    generateEngineer(team[1]),
-    generateIntern(team[2])
-  ];
+  const htmlArr= []
+  
+  htmlArr.push(
+    team
+      .filter((employee) => employee.role === 'manager')
+      .map((manager) => generateManager(manager))
+      .join("")
+  );
+  htmlArr.push(
+    team
+      .filter((employee) => employee.role === 'engineer')
+      .map((engineer) => generateEngineer(engineer))
+      .join("")
+  );
+  htmlArr.push(
+    team
+      .filter((employee) => employee.role === 'intern')
+      .map((intern) => generateIntern(intern))
+      .join("")
+  );
 
   return htmlArr.join("");
 };
