@@ -66,9 +66,151 @@ function init(){
   .then(answers =>{
     const manager = new Manager(answers.managerName, answers.managerId, answers.managerEmail, answers.managerOfficeNumber);
     team.push(manager);
-    writeFile(team);
+    // writeFile(team);
+    createTeam();
   });
 };
+
+function createTeam(){
+  inquirer
+  .prompt([
+    {
+      type: "list",
+      name: "memberChoice",
+      message: "Which Employee to Add Next?",
+      choices: [
+        "Engineer",
+        "Intern",
+        "No One Left to Add, Create My Team!",
+      ]
+    }
+  ])
+  .then(choice =>{
+    switch (choice.memberChoice){
+      case "Engineer":
+        addEngineer();
+        break;
+      case "Intern":
+        addIntern();
+        break;
+      default:
+        writeFile(team);
+    }
+  })
+};
+
+function addEngineer(){
+  inquirer
+  .prompt([
+    {
+      type: "input",
+      name: "engineerName",
+      message: "What is your Engineer's name?",
+      validate: answer =>{
+        if(answer !== ""){
+          return true;
+        }
+        return "Please enter Engineer's name.";
+      }
+    },
+    {
+      type: "input",
+      name: "engineerId",
+      message: "Input Engineer's ID number",
+      validate: answer =>{
+        if(answer.match(/^[1-9]\d*$/) ){
+          return true;
+        }
+        return "Please use only digits 0-9 for ID";
+      } 
+    },
+    {
+      type: "input",
+      name: "engineerEmail",
+      message: "Input Engineer's email address",
+      validate: answer =>{
+        if(answer.includes("@")){
+          return true;
+        }
+        return "Please enter valid email address"
+      }
+    },
+    {
+      type: "input",
+      name: "engineerGithub",
+      message: "Input Engineer's GitHub Username",
+      validate: answer =>{
+        if(answer !== ""){
+          return true;
+        }
+        return "Please enter valid Username.";
+      } 
+    },
+  ])
+  .then(answers =>{
+    const engineer = new Engineer(answers.engineerName, answers.engineerId, answers.engineerEmail, answers.engineerGithub);
+    team.push(engineer);
+    // writeFile(team);
+    createTeam();
+  });
+};
+
+function addIntern(){
+  inquirer
+  .prompt([
+    {
+      type: "input",
+      name: "internName",
+      message: "What is your Intern's name?",
+      validate: answer =>{
+        if(answer !== ""){
+          return true;
+        }
+        return "Please enter Intern's name.";
+      }
+    },
+    {
+      type: "input",
+      name: "internId",
+      message: "Input Intern's ID number",
+      validate: answer =>{
+        if(answer.match(/^[1-9]\d*$/) ){
+          return true;
+        }
+        return "Please use only digits 0-9 for ID";
+      } 
+    },
+    {
+      type: "input",
+      name: "internEmail",
+      message: "Input Intern's email address",
+      validate: answer =>{
+        if(answer.includes("@")){
+          return true;
+        }
+        return "Please enter valid email address"
+      }
+    },
+    {
+      type: "input",
+      name: "internSchool",
+      message: "What school soes your Intern attend?",
+      validate: answer =>{
+        if(answer !== ""){
+          return true;
+        }
+        return "Please enter valid school.";
+      } 
+    },
+  ])
+  .then(answers =>{
+    const intern = new Intern(answers.internName, answers.internId, answers.internEmail, answers.internSchool);
+    team.push(intern);
+    // writeFile(team);
+    createTeam();
+  });
+};
+
 
 init();
 
