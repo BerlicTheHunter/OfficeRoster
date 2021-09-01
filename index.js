@@ -194,7 +194,7 @@ function addIntern(){
     {
       type: "input",
       name: "internSchool",
-      message: "What school soes your Intern attend?",
+      message: "What school does your Intern attend?",
       validate: answer =>{
         if(answer !== ""){
           return true;

@@ -1,13 +1,14 @@
 const generateTeam = (team) =>{
   const generateManager = manager => {
     return `
-            <div class= "card">  
+            <div class= "card bg-light shadow-lg">  
               <div class= "card-body">
-                <h2 class="card-title">${manager.getName()}</h2>
+                <h2 class="card-title bg-primary rounded text-center text-light">${manager.getName()}</h2>
+                <h6 class="card-subtitle mb-2 text-muted">Manager</h6>
                 <ul class="list-group">
                         <li class="list-group-item">ID: ${manager.getId()}</li>
-                        <li class="list-group-item">Email: <a href="mailto:${manager.getEmail}">${manager.getEmail()}</a></li>
-                        <li class="list-group-item">Office number: ${manager.officeNumber}</li>
+                        <li class="list-group-item">Email: <a href="mailto:${manager.getEmail()}">${manager.getEmail()}</a></li>
+                        <li class="list-group-item">Office number: ${manager.getOfficeNumber()}</li>
                 </ul>
               </div>
             </div>    
@@ -16,9 +17,10 @@ const generateTeam = (team) =>{
 
   const generateEngineer = engineer => {
     return `
-            <div class= "card">  
+            <div class= "card bg-light shadow-lg">  
               <div class= "card-body">
-                <h2 class="card-title">${engineer.getName()}</h2>
+                <h2 class="card-title bg-primary rounded text-center text-light">${engineer.getName()}</h2>
+                <h6 class="card-subtitle mb-2 text-muted">Engineer</h6>
                 <ul class="list-group">
                         <li class="list-group-item">ID: ${engineer.getId()}</li>
                         <li class="list-group-item">Email: <a href="mailto:${engineer.getEmail()}">${engineer.getEmail()}</a></li>
@@ -32,9 +34,10 @@ const generateTeam = (team) =>{
 
   const generateIntern = intern => {
     return `
-            <div class= "card">
+            <div class= "card bg-light shadow-lg">
               <div class= "card-body">
-                <h2 class="card-title">${intern.getName()}</h2>
+                <h2 class="card-title bg-primary rounded text-center text-light">${intern.getName()}</h2>
+                <h6 class="card-subtitle mb-2 text-muted">Intern</h6>
                 <ul class="card-text list-group">
                         <li class="list-group-item">ID: ${intern.getId()}</li>
                         <li class="list-group-item">Email: <a href="mailto:${intern.getEmail()}">${intern.getEmail()}</a></li>
@@ -87,17 +90,17 @@ module.exports = team => {
     <script src="https://kit.fontawesome.com/c502137733.js"></script>
   </head>
 
-  <body>
-    <div class="container-fluid">
+  <body class="bg-secondary">
+    <div class="container-fluid ">
         <div class="row">
-            <div class="col-12 jumbotron mb-3 team-heading">
+            <div class="col-12 jumbotron mb-3 team-heading bg-success bg-success bg-gradient">
                 <h1 class="text-center">My Team</h1>
             </div>
         </div>
     </div>
     <div class="container">
         <div class="row">
-            <div class="team-area col-12 d-flex justify-content-center">
+            <div class="team-area col-12 d-flex justify-content-between">
                 ${generateTeam(team)}
             </div>
         </div>
