@@ -23,12 +23,11 @@ const generateTeam = (team) =>{
                 <h6 class="card-subtitle mb-2 text-muted">Engineer</h6>
                 <ul class="list-group">
                         <li class="list-group-item">ID: ${engineer.getId()}</li>
-                        <li class="list-group-item">Email: <a href="mailto:${engineer.getEmail()}">${engineer.getEmail()}</a></li>
-                        <li class="list-group-item">GitHub: <a href="https://github.com/${engineer.getGithub()}">${engineer.getGithub()}</li>
+                        <li class="list-group-item">Email: <a href="mailto:${engineer.getEmail()}"> ${engineer.getEmail()} </a></li>
+                        <li class="list-group-item">GitHub: <a href="https://github.com/${engineer.getGithub()}">${engineer.getGithub()}</a></li>
                 </ul>
               </div>
             </div>  
-
   `;
   };
 
