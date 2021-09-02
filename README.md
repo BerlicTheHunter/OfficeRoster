@@ -41,7 +41,7 @@ After the required install, simpley run "node index.js" in the command line and 
 ![Example Browser Page](./screenshots/ExamplePage.png)
 [Go to the Repo](https://github.com/BerlicTheHunter/OfficeRoster)
 
-[Go To Project Example](https://github.com/BerlicTheHunter/OfficeRoster/dist/index.html)
+[Go To Project Example](https://berlicthehunter.github.io/OfficeRoster/dist/index.html)
 
 
 ## License
